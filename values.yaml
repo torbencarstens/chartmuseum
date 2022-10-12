@@ -1,0 +1,29 @@
+chartmuseum:
+  env:
+    open:
+      STORAGE: amazon
+      STORAGE_AMAZON_BUCKET: helm-charts
+      STORAGE_AMAZON_REGION: "de-fra-1"
+      STORAGE_AMAZON_ENDPOINT: "sos-de-fra-1.exo.io"
+      AUTH_ANONYMOUS_GET: true
+      DISABLE_API: false
+      DEBUG: true
+    existingSecret: exoscale-credentials
+    existingSecretMappings:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "true"
+      cert-manager.io/cluster-issuer: "letsencrypt-issuer"
+      cert-manager.io/issue-temporary-certificate: "false"
+    hosts:
+      - name: charts.carstens.tech
+        path: /
+        tls: true
+
+aws:
+  accessKey: __AWS_ACCESS_KEY_ID__
+  accessSecret: __AWS_SECRET_ACCESS_KEY__

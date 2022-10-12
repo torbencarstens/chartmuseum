@@ -1,0 +1,10 @@
+apiVersion: v2
+name: chartmuseum
+description: deploy chartmuseum
+type: application
+version: 1.0.0
+appVersion: "2.14.1"
+dependencies:
+  - name: chartmuseum
+    version: "2.14.1"
+    repository: "https://charts.helm.sh/stable"

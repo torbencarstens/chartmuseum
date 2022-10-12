@@ -1,0 +1,6 @@
+dependencies:
+- name: chartmuseum
+  repository: https://charts.helm.sh/stable
+  version: 2.14.1
+digest: sha256:d9813a45d49cb399bb183e123f4c28c939819fee954e902d770688c5e5e35ff9
+generated: "2022-10-12T22:10:49.687369367+02:00"
