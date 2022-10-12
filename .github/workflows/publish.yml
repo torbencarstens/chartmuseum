@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: helm repo add stable https://charts.helm.sh/stable
       - run: helm dependency build
       - uses: WyriHaximus/github-action-helm3@v2
         with:
@@ -24,6 +25,7 @@ jobs:
     needs: lint
     steps:
       - uses: actions/checkout@v3
+      - run: helm repo add stable https://charts.helm.sh/stable
       - run: helm dependency build
       - run: sed -i -e "s/__AWS_ACCESS_KEY_ID__/${{ secrets.AWS_ACCESS_KEY_ID }}/g" values.yaml
       - run: sed -i -e "s/__AWS_SECRET_ACCESS_KEY__/${{ secrets.AWS_SECRET_ACCESS_KEY }}/g" values.yaml

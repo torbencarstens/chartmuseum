@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: helm repo add stable https://charts.helm.sh/stable
       - run: helm dependency build
       - uses: WyriHaximus/github-action-helm3@v2
         with:
